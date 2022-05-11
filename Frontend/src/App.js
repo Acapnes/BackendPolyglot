@@ -3,6 +3,8 @@ import CategoryList from "./CategoryList";
 import Navi from "./Navi";
 import ProductList from "./ProductList";
 import { Container, Row, Col } from "reactstrap";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NotFound from "./NotFound";
 
 export default class App extends Component {
   state = { currentCategory: "", products: [], cart: [] };
@@ -42,29 +44,29 @@ export default class App extends Component {
     let productInfo = { title: "Product Info", options: "null" };
     let categoryInfo = { title: "Category Info", options: "null" };
     return (
-      <div>
-        <Container>
-          <Navi cart={this.state.cart} />
+      <Router>
+        <div>
+          <Container>
+            <Navi cart={this.state.cart} />
 
-          <Row>
-            <Col xs="3">
-              <CategoryList
-                currentCategory={this.state.currentCategory}
-                changeCategory={this.changeCategory}
-                info={categoryInfo}
-              />
-            </Col>
-            <Col xs="9">
-              {/* örnek bir title değişkeni (herhangi bir şey olabilir) alt Componentlere aktarılıyor */}
-              <ProductList
-                addtoCart={this.addtoCart}
-                products={this.state.products}
-                info={productInfo}
-              />
-            </Col>
-          </Row>
-        </Container>
-      </div>
+            <Row>
+              <Col xs="3">
+                <CategoryList
+                  currentCategory={this.state.currentCategory}
+                  changeCategory={this.changeCategory}
+                  info={categoryInfo}
+                />
+              </Col>
+              <Col xs="9">
+                {/* örnek bir title değişkeni (herhangi bir şey olabilir) alt Componentlere aktarılıyor */}
+                {/* <Routes>
+                <Route exact path="/" component={NotFound} />
+              </Routes> */}
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </Router>
     );
   }
 }
