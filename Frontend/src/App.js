@@ -3,7 +3,8 @@ import CategoryList from "./CategoryList";
 import Navi from "./Navi";
 import ProductList from "./ProductList";
 import { Container, Row, Col } from "reactstrap";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import CartList from "./CartList";
+import { Routes, Route, Link } from "react-router-dom";
 import NotFound from "./NotFound";
 
 export default class App extends Component {
@@ -44,29 +45,43 @@ export default class App extends Component {
     let productInfo = { title: "Product Info", options: "null" };
     let categoryInfo = { title: "Category Info", options: "null" };
     return (
-      <Router>
-        <div>
-          <Container>
-            <Navi cart={this.state.cart} />
-
-            <Row>
-              <Col xs="3">
-                <CategoryList
-                  currentCategory={this.state.currentCategory}
-                  changeCategory={this.changeCategory}
-                  info={categoryInfo}
+      <div>
+        <Container>
+          <Navi cart={this.state.cart} />
+          <Row>
+            <Col xs="3">
+              <CategoryList
+                currentCategory={this.state.currentCategory}
+                changeCategory={this.changeCategory}
+                info={categoryInfo}
+              />
+            </Col>
+            <Col xs="9">
+              {/* örnek bir title değişkeni (herhangi bir şey olabilir) alt Componentlere aktarılıyor */}
+              <Routes>
+                <Route path="*" element={<NotFound />} />
+                <Route
+                  path="/products"
+                  element={
+                    <ProductList
+                      products={this.state.products}
+                      addtoCart={this.addtoCart}
+                      currentCategory={this.state.currentCategory}
+                      info={productInfo}
+                    />
+                  }
                 />
-              </Col>
-              <Col xs="9">
-                {/* örnek bir title değişkeni (herhangi bir şey olabilir) alt Componentlere aktarılıyor */}
-                {/* <Routes>
-                <Route exact path="/" component={NotFound} />
-              </Routes> */}
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      </Router>
+              </Routes>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     );
   }
+}
+
+{
+  /* <Routes>
+  <Route path="/navi" element={<Navi cart={this.state.cart} />} />
+</Routes>; */
 }
