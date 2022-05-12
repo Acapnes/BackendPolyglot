@@ -6,6 +6,7 @@ import { Container, Row, Col } from "reactstrap";
 import CartList from "./CartList";
 import { Routes, Route, Link } from "react-router-dom";
 import NotFound from "./NotFound";
+import FormDemo1 from "./FormDemo1";
 
 export default class App extends Component {
   state = { currentCategory: "", products: [], cart: [] };
@@ -65,6 +66,7 @@ export default class App extends Component {
               {/* örnek bir title değişkeni (herhangi bir şey olabilir) alt Componentlere aktarılıyor */}
               <Routes>
                 <Route path="*" element={<NotFound />} />
+                <Route path="/form" element={<FormDemo1 />} />
                 <Route
                   path="/cart"
                   element={
