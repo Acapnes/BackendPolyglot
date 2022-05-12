@@ -7,6 +7,7 @@ import CartList from "./CartList";
 import { Routes, Route, Link } from "react-router-dom";
 import NotFound from "./NotFound";
 import FormDemo1 from "./FormDemo1";
+import FormDeluxe from "./FormDeluxe";
 
 export default class App extends Component {
   state = { currentCategory: "", products: [], cart: [] };
@@ -67,6 +68,7 @@ export default class App extends Component {
               <Routes>
                 <Route path="*" element={<NotFound />} />
                 <Route path="/form" element={<FormDemo1 />} />
+                <Route path="/deluxe" element={<FormDeluxe />} />
                 <Route
                   path="/cart"
                   element={
