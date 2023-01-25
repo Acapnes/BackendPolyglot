@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Controllers",
+    "\\src\\Repositories"
+  ],
+  "SelectedNode": "\\src\\Repositories\\WeatherForecast.cs",
+  "PreviewInSolutionExplorer": false
+}

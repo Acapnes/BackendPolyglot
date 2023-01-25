@@ -1126,11 +1126,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\asalp\\Desktop\\Experimental-Gits\\DotNetApi-Mssql-Postgre\\..csproj",
+      "projectUniqueName": "C:\\Users\\asalp\\Desktop\\Experimental-Gits\\DotNet\\DotnetMssql\\..csproj",
       "projectName": ".",
-      "projectPath": "C:\\Users\\asalp\\Desktop\\Experimental-Gits\\DotNetApi-Mssql-Postgre\\..csproj",
+      "projectPath": "C:\\Users\\asalp\\Desktop\\Experimental-Gits\\DotNet\\DotnetMssql\\..csproj",
       "packagesPath": "C:\\Users\\asalp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\asalp\\Desktop\\Experimental-Gits\\DotNetApi-Mssql-Postgre\\obj\\",
+      "outputPath": "C:\\Users\\asalp\\Desktop\\Experimental-Gits\\DotNet\\DotnetMssql\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\asalp\\AppData\\Roaming\\NuGet\\NuGet.Config",
