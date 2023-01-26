@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
@@ -8,12 +9,17 @@ namespace API_MSSQL.Models
     public class Entry
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id")]
+        [AllowNull]
         public int? Id { get; set; }
 
         [Required]
-        [ForeignKey("AuthorId")]
+        [ForeignKey("author")]
         [Column("author")]
+        public int? AuthorId { get; set; }
+
+        [JsonIgnore]
         public User? Author { get; set; }
 
         [Required]

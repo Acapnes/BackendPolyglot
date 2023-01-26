@@ -34,7 +34,12 @@ namespace API_MSSQL.Repositories
 
         public IEnumerable<Entry> GetAll()
         {
-            return _context.Entries.ToList();
+            return _context.Entries.Select(e => new Entry { Id = e.Id, AuthorId = e.AuthorId });
+        }
+
+        public IEnumerable<Entry> GetAllWithAuthor()
+        {
+            return _context.Entries.Include(e => e.Author).ToList();
         }
 
         public void Update(Entry entity)

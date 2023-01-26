@@ -1,54 +1,46 @@
-﻿using API_MSSQL.Data;
-using API_MSSQL.Models;
+﻿using API_MSSQL.Models;
+using API_MSSQL.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace API_MSSQL.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("/[controller]")]
     public class UsersController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IRepository<User> _userRepository;
 
-        public UsersController(AppDbContext context)
+        public UsersController(IRepository<User> userRepository)
         {
-            _context = context;
+            _userRepository = userRepository;
         }
 
-        // GET: api/Users
         [HttpGet]
         public IEnumerable<User> GetUsers()
         {
-            return _context.Users;
+            return _userRepository.GetAll();
         }
 
-        // GET: api/Users/5
         [HttpGet("{id}")]
         public ActionResult<User> GetUser(int id)
         {
-            var user = _context.Users.Find(id);
-
+            var user = _userRepository.Get(id);
             if (user == null)
             {
                 return NotFound();
             }
-
             return user;
         }
 
-        // POST: api/Users
         [HttpPost]
         public ActionResult<User> PostUser(User user)
         {
-            _context.Users.Add(user);
-            _context.SaveChanges();
-
+            _userRepository.Add(user);
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-         //PUT: api/Users/5
+
         [HttpPut("{id}")]
         public ActionResult<User> PutUser(int id, User user)
         {
@@ -57,10 +49,22 @@ namespace API_MSSQL.Controllers
                 return BadRequest();
             }
 
-            //_context.Entry(user).State = Entity.EntityState.Modified;
-            _context.SaveChanges();
+            _userRepository.Update(user);
+            return Ok();
+        }
 
-            return NoContent();
+
+        [HttpDelete("{id}")]
+        public ActionResult<User> DeleteUser(int id)
+        {
+            var user = _userRepository.Get(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            _userRepository.Delete(user);
+            return user;
         }
     }
 }

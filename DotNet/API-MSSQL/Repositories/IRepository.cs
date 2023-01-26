@@ -8,6 +8,7 @@ namespace API_MSSQL.Repositories
         void Delete(T entity);
         T Get(int id);
         IEnumerable<T> GetAll();
+
         void Update(T entity);
     }
 }

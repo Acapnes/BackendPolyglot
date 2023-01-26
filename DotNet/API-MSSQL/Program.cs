@@ -14,6 +14,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer("Data Source=localhost;Initial Catalog=exp;UID=sa;PWD=123;TrustServerCertificate=True;"));
 builder.Services.AddScoped<IRepository<User>, UsersRepository>();
+builder.Services.AddScoped<IRepository<Entry>, EntriesRepository>();
+builder.Services.AddScoped<EntriesRepository, EntriesRepository>();
+builder.Services.AddScoped<UsersRepository, UsersRepository>();
 
 var app = builder.Build();
 
