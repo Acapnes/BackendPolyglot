@@ -11,16 +11,7 @@ public class LoggingMiddleware
 
     public async Task Invoke(HttpContext context)
     {
-        var stopwatch = Stopwatch.StartNew();
-
+        Console.WriteLine("Request reached");
         await _next(context);
-
-        stopwatch.Stop();
-        var elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
-
-        var requestMethod = context.Request.Method;
-        var requestPath = context.Request.Path;
-
-        Debug.WriteLine($"{requestMethod} {requestPath} {elapsedMilliseconds}ms");
     }
 }

@@ -1,7 +1,10 @@
 using API_MSSQL.Data;
 using API_MSSQL.Models;
 using API_MSSQL.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 internal class Program
 {
@@ -27,11 +30,12 @@ internal class Program
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
+            app.UseMiddleware<LoggingMiddleware>();
+
             app.UseSwagger();
             app.UseSwaggerUI();
         }
 
-        app.UseMiddleware<LoggingMiddleware>();
 
         app.UseHttpsRedirection();
 
