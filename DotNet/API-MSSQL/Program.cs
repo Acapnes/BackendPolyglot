@@ -25,6 +25,7 @@ internal class Program
         builder.Services.AddScoped<EntriesRepository, EntriesRepository>();
         builder.Services.AddScoped<UsersRepository, UsersRepository>();
 
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
