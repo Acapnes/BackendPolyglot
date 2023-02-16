@@ -14,7 +14,6 @@ namespace API_MSSQL.Models
         [AllowNull]
         public int? Id { get; set; }
 
-
         [Required]
         [ForeignKey("author")]
         [Column("author")]
