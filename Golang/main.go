@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func main() {
-	var name = "23"
+	name := []int{2, 3, 5, 7, 11, 13}
 	const veriabl = 50
-	fmt.Print(name)
+	fmt.Print(reflect.TypeOf(name))
 }
