@@ -1,6 +1,10 @@
-package com.example.demo;
+package com.example.demo.Model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
@@ -14,7 +18,6 @@ public class User {
     private String email;
     private String password;
 
-    // Diğer alanlar ve getter/setter metotları...
 
     public Long getId() {
         return id;
