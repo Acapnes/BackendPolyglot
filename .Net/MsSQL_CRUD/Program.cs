@@ -12,14 +12,12 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
 
         builder.Services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer("Data Source=localhost;Initial Catalog=exp;UID=sa;PWD=123;TrustServerCertificate=True;"));
+        builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer("Data Source=localhost;Initial Catalog=DBExperimental;UID=sa;PWD=123;TrustServerCertificate=True;"));
         builder.Services.AddScoped<IRepository<User>, UsersRepository>();
         builder.Services.AddScoped<IRepository<Entry>, EntriesRepository>();
         builder.Services.AddScoped<EntriesRepository, EntriesRepository>();
