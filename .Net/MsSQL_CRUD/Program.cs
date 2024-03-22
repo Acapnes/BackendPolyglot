@@ -29,7 +29,14 @@ internal class Program
         if (app.Environment.IsDevelopment())
         {
             app.UseMiddleware<LoggingMiddleware>();
-
+            
+            // Func validation on specified Endpoints
+            /* app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/general"), appBuilder =>
+                {
+                    appBuilder.UseMiddleware<MyMiddlewareOne>();
+                });
+            */
+            
             app.UseSwagger();
             app.UseSwaggerUI();
         }
